@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: supabase-db
+    image: postgres:15.6.0
+    environment:
+      POSTGRES_PASSWORD: CabinetGeriatrie2024!
+      POSTGRES_DB: supabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - supabase-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  meta:
+    container_name: supabase-meta
+    image: supabase/postgres-meta:v0.83.0
+    environment:
+      PG_META_PORT: 5432
+      PG_META_DB_HOST: db
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: supabase
+      PG_META_DB_USER: postgres
+      PG_META_DB_PASSWORD: CabinetGeriatrie2024!
+    ports:
+      - "54324:5432"
+    depends_on:
+      - db
+
+volumes:
+  supabase-db:
