@@ -187,12 +187,12 @@ CREATE INDEX idx_notifications_user ON notifications(user_id);
 INSERT INTO cabinets (name, address, phone, email, description)
 VALUES ('Cabinet Gériatrie Principal', '123 Rue de la Médecine, 75001 Paris', '+33 1 23 45 67 89', 'contact@cabinet-geriatrie.fr', 'Cabinet spécialisé en gériatrie');
 
-INSERT INTO users (email, password_hash, first_name, last_name, role, is_active, email_verified)
+INSERT INTO users (email, password_hash, first_name, last_name, role, specialty, date_of_birth, gender, is_active, email_verified)
 VALUES 
-  ('admin@cabinet-geriatrie.fr', crypt('admin123', gen_salt('bf')), 'Admin', 'Système', 'super_admin', true, true),
-  ('chef@cabinet-geriatrie.fr', crypt('chef123', gen_salt('bf')), 'Jean', 'Dupont', 'chef_cabinet', true, true),
-  ('medecin@cabinet-geriatrie.fr', crypt('medecin123', gen_salt('bf')), 'Marie', 'Martin', 'medecin', 'Gériatrie', true, true),
-  ('patient@cabinet-geriatrie.fr', crypt('patient123', gen_salt('bf')), 'Pierre', 'Durand', 'patient', '1950-05-15', 'male', true, true);
+  ('admin@cabinet-geriatrie.fr', crypt('admin123', gen_salt('bf')), 'Admin', 'Système', 'super_admin', NULL, NULL, NULL, true, true),
+  ('chef@cabinet-geriatrie.fr', crypt('chef123', gen_salt('bf')), 'Jean', 'Dupont', 'chef_cabinet', NULL, NULL, NULL, true, true),
+  ('medecin@cabinet-geriatrie.fr', crypt('medecin123', gen_salt('bf')), 'Marie', 'Martin', 'medecin', 'Gériatrie', NULL, NULL, true, true),
+  ('patient@cabinet-geriatrie.fr', crypt('patient123', gen_salt('bf')), 'Pierre', 'Durand', 'patient', NULL, '1950-05-15', 'male', true, true);
 
 INSERT INTO cabinet_members (cabinet_id, user_id, role)
 SELECT c.id, u.id, u.role
