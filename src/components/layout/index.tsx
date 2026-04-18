@@ -307,15 +307,13 @@ function SidebarContent() {
   return (
     <aside className="fixed left-0 top-0 h-full w-64 bg-sidebar border-r border-sidebar-border flex flex-col z-40">
       {/* Logo */}
-      <div className="h-16 px-5 flex items-center border-b border-sidebar-border">
-        <Link href="/dashboard" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <span className="text-primary-foreground font-bold text-lg">S</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold text-sidebar-foreground tracking-tight">SEVEN</span>
-            <span className="text-[10px] text-sidebar-muted font-medium">Centre Medical</span>
-          </div>
+      <div className="h-20 px-4 flex items-center border-b border-sidebar-border">
+        <Link href="/dashboard" className="flex items-center justify-center w-full group">
+          <img 
+            src="/logo.png" 
+            alt="SEVEN Cabinet" 
+            className="h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
+          />
         </Link>
       </div>
 
